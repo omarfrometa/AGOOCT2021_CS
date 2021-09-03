@@ -27,6 +27,17 @@
     <Property Name="Disabled" Type="bit" Nullable="false" />
     <Property Name="CreatedDate" Type="datetime" Nullable="false" />
   </EntityType>
+  <EntityType Name="Subject">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Seq" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Description" Type="varchar" MaxLength="255" />
+    <Property Name="Enabled" Type="bit" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+  </EntityType>
   <Association Name="FK_Student_Career">
     <End Role="Career" Type="Self.Career" Multiplicity="1" />
     <End Role="Student" Type="Self.Student" Multiplicity="*" />
@@ -42,6 +53,7 @@
   <EntityContainer Name="ConsSoftBOStoreContainer">
     <EntitySet Name="Career" EntityType="Self.Career" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Student" EntityType="Self.Student" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Subject" EntityType="Self.Subject" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK_Student_Career" Association="Self.FK_Student_Career">
       <End Role="Career" EntitySet="Career" />
       <End Role="Student" EntitySet="Student" />

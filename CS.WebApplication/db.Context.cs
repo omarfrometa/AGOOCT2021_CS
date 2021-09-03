@@ -27,5 +27,6 @@ namespace CS.WebApplication
     
         public virtual DbSet<Career> Career { get; set; }
         public virtual DbSet<Student> Student { get; set; }
+        public virtual DbSet<Subject> Subject { get; set; }
     }
 }
