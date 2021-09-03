@@ -1,0 +1,61 @@
+﻿@model IEnumerable<CS.WebApplication.Career>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = null;
+}
+
+<link href="https://getbootstrap.com/docs/5.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+
+<meta name="theme-color" content="#7952b3">
+
+
+<style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @@media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+</style>
+
+
+<!-- Custom styles for this template -->
+<link href="https://getbootstrap.com/docs/5.1/examples/pricing/pricing.css" rel="stylesheet">
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+<div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+    @foreach (var item in Model)
+    {
+        <div class="col">
+            <div class="card mb-4 rounded-3 shadow-sm">
+                <div class="card-header py-3">
+                    <h4 class="my-0 fw-normal">@item.Name</h4>
+                </div>
+                <div class="card-body">
+                    <h1 class="card-title pricing-card-title">@item.Description</h1>
+                    <ul class="list-unstyled mt-3 mb-4">
+                        <li>@item.CreatedDate.ToString("dd/MM/yyyy")</li>
+                        <li>@item.CreatedDate.ToString("hh:mm:ss tt")</li>
+                    </ul>
+                    <img src="~/Public/Careers/@(string.IsNullOrEmpty(item.LogoUrl) ? "avatar.jpg" : item.LogoUrl)" style="height:75px; border-radius:50px" />
+                </div>
+            </div>
+        </div>
+
+    }
+
+
+</div>
+
+
